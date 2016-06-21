@@ -1,6 +1,6 @@
 package com.arwer.artaskqueue;
 
-import com.arwer.rllibrary.threads.TaskQueue;
+import com.arwer.arlibrary.threads.TaskQueue;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.arwer.rllibrary.threads;
+package com.arwer.arlibrary.threads;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,18 +11,24 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
- * 任务队列管理类。
- * TaskQueue是一个基于Java ExecutorService的线程池包装类，对上层代码提供简单易用的接口方法，使上层代码聚焦业务而无需繁琐实现线程池的细节代码。
+ * @file TaskQueue.java
+ * @brief TaskQueue是一个基于Java ExecutorService的线程池包装类，对上层代码提供简单易用的接口方法，使上层代码聚焦业务而无需繁琐实现线程池的细节代码。
+ * @details 现有功能：
+ *      1、管理并发线程，可以1个线程串行，也可以自定义并发线程数；
+ *      2、可以添加任务，执行任意Callable任务，比如网络存取、数据库存取、复杂计算等等；
+ *      3、可以对某一任务执行取消、得到状态/执行结果；可以取消未执行的任务；可以手动控制队列开始/停止；
+ *      4、队列中所有任务完成后有回调，可以得到每个任务的执行状况以及返回值。
  *
- * 现有功能：
- * 1、管理并发线程，可以1个线程串行，也可以自定义并发线程数；
- * 2、可以添加任务，执行任意Callable任务，比如网络存取、数据库存取、复杂计算等等；
- * 3、可以对某一任务执行取消、得到状态/执行结果；可以取消未执行的任务；可以手动控制队列开始/停止；
- * 4、队列中所有任务完成后有回调，可以得到每个任务的执行状况以及返回值。
+ *      示例可以参考单元测试类：TaskQueueUnitTest 或 TaskQueueAppTest
+ * @version v1.0
+ * @author 创建人：LongJun
+ * @date 创建日期：2016-02-27
+ * @copyright Copyright (c) 2016 ArwerSoftware All rights reserved.
  *
- * 示例可以参考单元测试类：TaskQueueUnitTest 或 TaskQueueAppTest
+ * @date 修改日期，例：xxxx年x月xx日
+ * @details 修改历史记录：详细说明修改的内容。
+ * @author 修改人的名字及单位
  *
- * Created by long on 16/2/27.
  */
 public class TaskQueue {
 
@@ -108,7 +114,7 @@ public class TaskQueue {
 
     /**
      * 得到线程池的执行工具
-     * @return
+     * @return 线程池对象
      */
     private ExecutorService getPool() {
         /*

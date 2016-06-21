@@ -3,7 +3,7 @@ package com.arwer.artaskqueue;
 import android.app.Application;
 import android.test.ApplicationTestCase;
 
-import com.arwer.rllibrary.threads.TaskQueue;
+import com.arwer.arlibrary.threads.TaskQueue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

@@ -20,73 +20,72 @@ Android
 -------
 ```
  // 实例化任务队列对象
-            final TaskQueue taskQueue = new TaskQueue();
-            // 设置并发线程数量
-            taskQueue.setMaxConcurrentThreadCount(4);
-            // 添加第1个任务
-            taskQueue.add("task1", new Callable<String>() {
-                String resultStr = null;
-                @Override
-                public String call() throws Exception {
-                    System.out.println(">>> task1 start execute");
+final TaskQueue taskQueue = new TaskQueue();
+// 设置并发线程数量
+taskQueue.setMaxConcurrentThreadCount(4);
+// 添加第1个任务
+taskQueue.add("task1", new Callable<String>() {
+    String resultStr = null;
+    @Override
+    public String call() throws Exception {
+        System.out.println(">>> task1 start execute");
 
-                    String resultStr = httpGet("http://www.baidu.com");
+        String resultStr = httpGet("http://www.baidu.com");
 
-                    System.out.println(">>> task1 finished time: " + (new Date().toString()));
-                    return resultStr;
-                }
-            });
-            // 添加第2个任务
-            taskQueue.add("task2", new Callable<String>() {
-                String resultStr = null;
-                @Override
-                public String call() throws Exception {
-                    System.out.println(">>> task2 start execute");
+        System.out.println(">>> task1 finished time: " + (new Date().toString()));
+        return resultStr;
+    }
+});
+// 添加第2个任务
+taskQueue.add("task2", new Callable<String>() {
+    String resultStr = null;
+    @Override
+    public String call() throws Exception {
+        System.out.println(">>> task2 start execute");
 
-                    try {
-                        resultStr = httpGet("http://www.163.com");
-                    }
-                    catch (Exception e) {
-                        // 如果任务2执行出错则取消后面的任务执行，队列将结束
-                        taskQueue.cancelAllUnexecuted();
-                    }
-                    System.out.println(">>> task2 finished time: " + (new Date().toString()));
-                    return resultStr;
-                }
-            });
-            // 添加第3个任务
-            taskQueue.add("task3", new Callable<Integer>() {
-                @Override
-                public Integer call() throws Exception {
-                    System.out.println(">>> task3 start execute");
-                    System.out.println(">>> task3 finished time: " + (new Date().toString()));
-                    return Integer.valueOf(1+1);
-                }
-            });
-            // 添加第4个任务
-            taskQueue.add("task4", new Callable<Integer>() {
-                @Override
-                public Integer call() throws Exception {
-                    System.out.println(">>> task4 start execute");
-                    System.out.println(">>> task4 finished time: " + (new Date().toString()));
-                    return Integer.valueOf(9*9);
-                }
-            });
-            // 设置整个队列完成后的回调
-            taskQueue.setQueueFinishedCallback(new TaskQueue.IQueueFinishedCallback() {
-                @Override
-                public void onFinished(Map<String, Object> result) {
-                    System.out.println(">>> All task finished, total=" + result.size());
-                    for (Map.Entry entry : result.entrySet()) {
+        try {
+            resultStr = httpGet("http://www.163.com");
+        }
+        catch (Exception e) {
+            // 如果任务2执行出错则取消后面的任务执行，队列将结束
+            taskQueue.cancelAllUnexecuted();
+        }
+        System.out.println(">>> task2 finished time: " + (new Date().toString()));
+        return resultStr;
+    }
+});
+// 添加第3个任务
+taskQueue.add("task3", new Callable<Integer>() {
+    @Override
+    public Integer call() throws Exception {
+        System.out.println(">>> task3 start execute");
+        System.out.println(">>> task3 finished time: " + (new Date().toString()));
+        return Integer.valueOf(1+1);
+    }
+});
+// 添加第4个任务
+taskQueue.add("task4", new Callable<Integer>() {
+    @Override
+    public Integer call() throws Exception {
+        System.out.println(">>> task4 start execute");
+        System.out.println(">>> task4 finished time: " + (new Date().toString()));
+        return Integer.valueOf(9*9);
+    }
+});
+// 设置整个队列完成后的回调
+taskQueue.setQueueFinishedCallback(new TaskQueue.IQueueFinishedCallback() {
+    @Override
+    public void onFinished(Map<String, Object> result) {
+        System.out.println(">>> All task finished, total=" + result.size());
+        for (Map.Entry entry : result.entrySet()) {
 //                        System.out.println(">>> TaskQueue finished, taskName=" + entry.getKey() + ", value=" + (entry.getValue()==null ? "null" : entry.getValue().toString()) );
-                        System.out.println(">>> taskName=" + entry.getKey() + ", value=" + entry.getValue());
-                    }
+            System.out.println(">>> taskName=" + entry.getKey() + ", value=" + entry.getValue());
+        }
 
-                }
-            });
-            // 开始队列
-            taskQueue.start();
-```
+    }
+});
+// 开始队列
+taskQueue.start();```
 
 
 

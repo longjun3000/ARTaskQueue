@@ -3,7 +3,7 @@ package com.arwer.artaskqueue;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.arwer.rllibrary.threads.TaskQueue;
+import com.arwer.arlibrary.threads.TaskQueue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
