@@ -19,7 +19,7 @@ ARTaskQueue现有的功能：
 Android
 -------
 ```
- // 实例化任务队列对象
+// 实例化任务队列对象
 final TaskQueue taskQueue = new TaskQueue();
 // 设置并发线程数量
 taskQueue.setMaxConcurrentThreadCount(4);
@@ -85,7 +85,8 @@ taskQueue.setQueueFinishedCallback(new TaskQueue.IQueueFinishedCallback() {
     }
 });
 // 开始队列
-taskQueue.start();```
+taskQueue.start();
+```
 
 
 
