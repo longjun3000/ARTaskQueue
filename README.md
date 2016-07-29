@@ -1,5 +1,17 @@
 ARTaskQueue
 ===========
+ARTaskQueue is a java-based ExecutorService thread pool wrapper classes, on the upper code provides easy-to-use interface method, makes the upper code focused business without cumbersome implementation details of the thread pool code.
+
+ARTaskQueue existing functionality:
+
+1. manage concurrent threads, serial, can one thread can also custom concurrent threads;
+
+2. you can add tasks to perform any Callable task, such as network access, database access, complicated calculation, etc.
+
+3. can be canceled for a task execution, state/execution results; Can cancel not perform tasks; Can manual control queue start/stop;
+
+4. all tasks completed after the callback, the queue, you can get each task execution status and return values.
+
 
 ARTaskQueue是一个基于Java ExecutorService的线程池包装类，对上层代码提供简单易用的接口方法，使上层代码聚焦业务而无需繁琐实现线程池的细节代码。  
 <br/><br/>
