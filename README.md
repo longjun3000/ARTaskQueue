@@ -12,7 +12,7 @@ ARTaskQueue existing functionality:
 
 4. all tasks completed after the callback, the queue, you can get each task execution status and return values.
 
-
+<br><br>
 ARTaskQueue是一个基于Java ExecutorService的线程池包装类，对上层代码提供简单易用的接口方法，使上层代码聚焦业务而无需繁琐实现线程池的细节代码。  
 <br/><br/>
 ARTaskQueue现有的功能：
